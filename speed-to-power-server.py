@@ -36,7 +36,7 @@ def update_gear(stdscr):
 async def handler(websocket):
     await register(websocket)
     try:
-        async for message in websocket:
+        async for _ in websocket:
             pass
     except websockets.ConnectionClosed:
         pass
@@ -81,7 +81,7 @@ async def speed_sensor_server(address):
     global last_rev, last_time, should_run
     try:
         async with BleakClient(address, timeout=5) as client:
-            print(f"Connected to {address}")
+            # print(f"Connected to {address}")
             def handle_rev_data(data: CSCMeasurement):
                 global last_time, last_rev
                 if last_time == 0:
@@ -120,7 +120,7 @@ async def speed_sensor_server(address):
 
 async def run():
     await websockets.serve(handler, "localhost", 54399)
-    print("WebSocket server started on ws://localhost:8765")
+    # print("WebSocket server started on ws://localhost:8765")
 
     global should_run
     while should_run:
@@ -128,9 +128,9 @@ async def run():
         while address is None:
             address = await find_device()
             if address is None:
-                print("No SPD device found, retrying...")
+                # print("No SPD device found, retrying...")
                 await asyncio.sleep(0.5)
-        print(f"Found SPD device: {address}")
+        # print(f"Found SPD device: {address}")
         await speed_sensor_server(address)
 
 def run_simulator():
