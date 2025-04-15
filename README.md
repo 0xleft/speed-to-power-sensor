@@ -10,14 +10,16 @@ This works by settings up a server which will send the virtual power through a w
 
 Also this script has a tendency to fuck itself (if you close it at a wrong time) so if you ever encounter a `Error: ` that is empty just restart the raspberry pi.
 
+To run the app you 
+
 ## Showcase
-
-
 
 ## Dependencies
 
 1. All the dependencies listed under `https://github.com/abandonware/bleno#running-on-linux`
 
-2. May god help you installing dependencies for this project as npm's package.json will most likely fuck itself all I'm going to say is run `npm i` and then try installing each dependecy by itself. Also keep in mind somehow the order of instalation also matters a lot in this case.
+2. `python3 -m pip install -r requirements.txt`
+
+2.1 May god help you installing dependencies for this project as npm's package.json will most likely fuck itself all I'm going to say is run `npm i` and then try installing each dependecy by itself. Also keep in mind somehow the order of instalation also matters a lot in this case.
 
 `npm install bleno@npm:@abandonware/bleno` Will help you
