@@ -18,8 +18,12 @@ To run the app you
 
 1. All the dependencies listed under `https://github.com/abandonware/bleno#running-on-linux`
 
-2. `python3 -m pip install -r requirements.txt`
+2. `python3 -m venv .venv`
 
-2.1 May god help you installing dependencies for this project as npm's package.json will most likely fuck itself all I'm going to say is run `npm i` and then try installing each dependecy by itself. Also keep in mind somehow the order of instalation also matters a lot in this case.
+2.1. `.venv/bin/python3 -m pip install -r requirements.txt`
 
-`npm install bleno@npm:@abandonware/bleno` Will help you
+3. `npm i`
+
+## Running it
+
+`./venv/bin/python3 speed-to-power-server.py`

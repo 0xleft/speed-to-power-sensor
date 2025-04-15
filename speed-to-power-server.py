@@ -121,9 +121,8 @@ async def run():
 
 def run_simulator():
     time.sleep(5)
-    proc = subprocess.Popen(["npm", "run", "main"], cwd=os.path.dirname(os.path.abspath(__file__)))
+    proc = subprocess.Popen(["npm", "run", "main"], cwd=os.path.dirname(os.path.abspath(__file__)), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     proc.wait()
-
 
 if __name__ == "__main__":
     simulator_thread = threading.Thread(target=run_simulator)
