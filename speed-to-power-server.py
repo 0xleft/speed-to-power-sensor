@@ -12,10 +12,10 @@ import os
 
 last_rev = 0
 last_time = 0
-lever = 2
 should_run = True
 
 WHEEL_CIRCUMFERENCE = 2110 # in mm
+lever = 2
 
 CONNECTIONS: set[websockets.ClientConnection] = set()
 
