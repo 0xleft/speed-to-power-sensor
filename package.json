@@ -1,0 +1,12 @@
+{
+  "name": "speed-to-power",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simulator.js",
+  "scripts": {
+    "main": "sudo node simulator.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "0xleft",
+  "license": "MIT"
+}
