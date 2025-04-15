@@ -26,4 +26,4 @@ To run the app you
 
 ## Running it
 
-`./venv/bin/python3 speed-to-power-server.py`
+`.venv/bin/python3 speed-to-power-server.py`
