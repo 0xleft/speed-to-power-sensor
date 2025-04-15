@@ -7,6 +7,13 @@
     "main": "sudo node simulator.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "bleno": "npm:@abandonware/bleno@^0.6.2",
+    "minimist": "^1.2.0",
+    "readline": "^1.3.0",
+    "usb": "2.15.0",
+    "ws": "^8.18.1"
+  },
   "author": "0xleft",
   "license": "MIT"
 }
