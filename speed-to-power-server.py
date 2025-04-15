@@ -69,6 +69,7 @@ async def speed_sensor_server(address):
         async with BleakClient(address, timeout=5) as client:
             print(f"Connected to {address}")
             def handle_rev_data(data: CSCMeasurement):
+                global last_time, last_rev
                 if last_time == 0:
                     last_time = data.last_wheel_event_time
 
