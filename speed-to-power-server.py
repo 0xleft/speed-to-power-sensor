@@ -130,7 +130,7 @@ async def run():
             if address is None:
                 # print("No SPD device found, retrying...")
                 await asyncio.sleep(0.5)
-        # print(f"Found SPD device: {address}")
+        print(f"Found SPD device: {address}")
         await speed_sensor_server(address)
 
 def run_simulator():
