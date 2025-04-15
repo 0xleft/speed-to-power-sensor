@@ -9,6 +9,7 @@ import threading
 import time
 import subprocess
 import os
+import curses
 
 last_rev = 0
 last_time = 0
@@ -18,6 +19,19 @@ WHEEL_CIRCUMFERENCE = 2110 # in mm
 lever = 2
 
 CONNECTIONS: set[websockets.ClientConnection] = set()
+
+def update_gear(stdscr):
+    global lever
+    stdscr.clear()
+    stdscr.addstr(0, 0, "Press 'q' to quit, '1' to '9' to change gear")
+    while True:
+        key = stdscr.getch()
+        if key == ord('q'):
+            break
+        elif ord('1') <= key <= ord('9'):
+            lever = key - ord('0')
+            stdscr.addstr(2, 0, f"Gear changed to: {lever}")
+            stdscr.refresh()
 
 async def handler(websocket):
     await register(websocket)
@@ -125,6 +139,14 @@ def run_simulator():
     proc.wait()
 
 if __name__ == "__main__":
+    # Start the gear update thread
+    stdscr = curses.initscr()
+    curses.cbreak()
+    curses.noecho()
+    stdscr.keypad(True)
+    gear_thread = threading.Thread(target=update_gear, args=(stdscr,))
+    gear_thread.start()
+    
     simulator_thread = threading.Thread(target=run_simulator)
     simulator_thread.start()
 
