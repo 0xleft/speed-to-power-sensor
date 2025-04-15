@@ -9,7 +9,6 @@ import threading
 import time
 import subprocess
 import os
-import curses
 
 last_rev = 0
 last_time = 0
@@ -19,25 +18,6 @@ should_run = True
 WHEEL_CIRCUMFERENCE = 2110 # in mm
 
 CONNECTIONS: set[websockets.ClientConnection] = set()
-
-def run_key_listener():
-    global lever, should_run
-    stdscr = curses.initscr()
-    stdscr.keypad(True)
-    stdscr.nodelay(1)
-
-    while should_run:
-        key = stdscr.getch()
-        if key == ord('q'):
-            break
-        elif key == ord('w'):
-            lever = min(lever + 1, 10)
-            print(f"Lever: {lever}")
-        elif key == ord('s'):
-            lever = max(lever - 1, 1)
-            print(f"Lever: {lever}")
-
-    curses.endwin()
 
 async def handler(websocket):
     await register(websocket)
@@ -145,9 +125,6 @@ def run_simulator():
 
 
 if __name__ == "__main__":
-    key_listener_thread = threading.Thread(target=run_key_listener)
-    key_listener_thread.start()
-
     simulator_thread = threading.Thread(target=run_simulator)
     simulator_thread.start()
 
